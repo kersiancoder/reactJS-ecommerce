@@ -12,7 +12,7 @@
 
 const Footer = () => {
     return (
-        <p>Soy el footer</p>
+        <span>2022 © Zoo Kids | Powered by Maximiliano Heijo</span>
     )
 }
 
