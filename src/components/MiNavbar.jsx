@@ -2,14 +2,14 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { BsCart } from "react-icons/bs";
+import CartWidget from './CartWidget';
 
 
 function MiNavbar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">Zoo Kids</Navbar.Brand>
+        <Navbar.Brand href="#" className="brand">Zoo Kids</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0">
@@ -20,10 +20,9 @@ function MiNavbar() {
           <Nav>
             <Nav.Link href="#login">Login</Nav.Link>
             <Nav.Link href="#registrarse">Registrarse</Nav.Link>
-            <Nav.Link href="#carrito"><BsCart /></Nav.Link>
-            
+            <Nav.Link href="#carrito"><CartWidget /> </Nav.Link>
+                
           </Nav>
-          
         </Navbar.Collapse>
       </Container>
       
@@ -32,4 +31,4 @@ function MiNavbar() {
   );
 }
 
-export default MiNavbar;
+export default MiNavbar
