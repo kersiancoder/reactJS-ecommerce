@@ -1,4 +1,4 @@
-# Zoo Kids - Tienda Online
+# Zoo Kids - Tienda Online 🛒
 
 https://react-maximilianoheijo.netlify.app/
 
