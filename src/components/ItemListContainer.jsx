@@ -1,9 +1,27 @@
-const ItemListContainer = (props) => {
-    return (
-        <>
-            <div>{props.mensaje}</div>
-        </>
-    )
-}  
+import Products from '../components/Products';
+import { data } from "../utils/Data"
+import { useState } from "react";
 
-export default ItemListContainer
+
+const ItemListContainer = () => {
+  const [datos, setDatos] = useState (data); //hook
+
+  const deleteItem = (id) => {
+    let newData = datos.filter(item => item.id !== id)
+    setDatos(newData)
+  }
+
+  return (
+    <>
+      {
+      datos.map(item => (
+        <Products key={item.id} {...item}/>
+      ))
+    }
+      </>
+  )
+  
+
+}
+
+export default ItemListContainer;

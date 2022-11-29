@@ -7,8 +7,8 @@ const App = () => {
   return (
     <>
     <MiNavbar />
-    <ItemListContainer mensaje="Hola ItemListContainer"/>
     <h1 className="titulo">Bienvenidos a la Tienda</h1>
+    <ItemListContainer mensaje="Hola ItemListContainer"/>
     <Footer />
     </>
   )
