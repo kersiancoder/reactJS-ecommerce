@@ -1,6 +1,5 @@
-const Footer = () => {
+export const Footer = () => {
     return (
-        <span>2022 © Zoo Kids | Powered by Maximiliano Heijo</span>
+        <p className="text-center">2022 © Zoo Kids | Powered by <a href="https://www.linkedin.com/in/maximiliano-heijo">Maximiliano Heijo</a></p>
     )
 }
-export default Footer
