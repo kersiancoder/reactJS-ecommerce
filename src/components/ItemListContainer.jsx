@@ -3,6 +3,8 @@ import { data } from "../utils/Data"
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router';
 import ItemList from './ItemList';
+// const { data } = require('../utils/Data');
+
 
 
 
