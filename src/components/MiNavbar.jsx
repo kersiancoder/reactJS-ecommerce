@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,18 +10,18 @@ export function MiNavbar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#" className="brand">Zoo Kids</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/"><img width="120px" src="https://zookids.uy/wp-content/uploads/2019/04/logo.png" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0">
-            <Nav.Link href="#cat1">Categoría 1</Nav.Link>
-            <Nav.Link href="#cat2">Categoría 2</Nav.Link>
-            <Nav.Link href="#cat3">Categoría 3</Nav.Link>
+            <Nav.Link as={Link} to="categoria/1">Bebés</Nav.Link>
+            <Nav.Link as={Link} to="categoria/2">Niños</Nav.Link>
+            <Nav.Link as={Link} to="categoria/3">Adolescentes</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#login">Login</Nav.Link>
-            <Nav.Link href="#registrarse">Registrarse</Nav.Link>
-            <Nav.Link href="#carrito"><CartWidget /> </Nav.Link>
+            <Nav.Link>Login</Nav.Link>
+            <Nav.Link>Registrarse</Nav.Link>
+            <Nav.Link><CartWidget /> </Nav.Link>
                 
           </Nav>
         </Navbar.Collapse>

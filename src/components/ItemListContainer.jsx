@@ -1,28 +1,28 @@
-import Products from './Items';
+import customFetch from "../utils/customFetch";
 import { data } from "../utils/Data"
-import { useState } from "react";
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { useEffect, useState } from "react";
+import { useParams } from 'react-router';
+import ItemList from './ItemList';
 
 
 
 const ItemListContainer = () => {
-  const [products, setProducts] = useState (data); //hook
+  const [products, setProducts] = useState ([]); //hook
+  const { idCategory } = useParams();
 
-const ProductCategory = (CategoryId) => {
-    let newProducts = products.filter(product => product.category == category)
-    setProducts(newProducts)
-}
+  //componentDidUpdate
+  useEffect(() => {
+    customFetch(2000, data.filter(item => {
+        if (idCategory === undefined) return item;
+        return item.idCategory === parseInt(idCategory)
+    }))
+        .then(result => setProducts(result))
+        .catch(err => console.log(err))
+}, [products]);
+
 
     return (
-        <>
-        <Row xs={1} sm={2} md={3} lg={4} className="m-3 p-3">
-            {
-            products.map(product => (<Products key={product.id} {...product}/>))
-            }
-    </Row>
-        </>
+        <ItemList items={products} />
     )
 }
 
