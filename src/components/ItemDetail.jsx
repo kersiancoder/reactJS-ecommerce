@@ -1,5 +1,4 @@
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
 const ItemDetail = ({ item }) => {
 
@@ -7,17 +6,22 @@ const ItemDetail = ({ item }) => {
         <>
         {
             item && item.thumbnail
-            ? 
-            <Card className='p-3'>
-            <Card.Body>
-            <img className='center' width="30%" src={item.thumbnail} alt="" />
-            <Card.Title>{item.title}</Card.Title>
-            <Card.Text>Precio: $ {item.price}</Card.Text>
-            <Card.Text>Unidades en stock: {item.stock}</Card.Text>
-            <p><b>DESCRIPCIÓN:</b></p>
-            <p className='bottom'>{item.description}</p>
-            </Card.Body>
-            </Card>
+            ?
+            <>
+            <div className='product-wrapper'>
+                <div className="product-image">
+                    <img className='' src={item.thumbnail} alt="" />
+                </div>
+                <div className="product-text">
+                    <p className='product-title'>{item.title}</p>
+                    <p>Precio: $ {item.price}</p>
+                    <p>Unidades en stock: {item.stock}</p>
+                    <Button className='pb-1'>Agregar al carrito</Button>
+                    <p><b>DESCRIPCIÓN:</b></p>
+                    <p className='bottom'>{item.description}</p>
+                </div>
+            </div>
+            </>
             : <p>Cargando...</p>
         }
         </>
