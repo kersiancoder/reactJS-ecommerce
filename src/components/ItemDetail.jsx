@@ -15,7 +15,7 @@ const ItemDetail = ({ item }) => {
             <Card.Text>Precio: $ {item.price}</Card.Text>
             <Card.Text>Unidades en stock: {item.stock}</Card.Text>
             <p><b>DESCRIPCIÓN:</b></p>
-            <Card.Text>{item.description}</Card.Text>
+            <p className='bottom'>{item.description}</p>
             </Card.Body>
             </Card>
             : <p>Cargando...</p>
