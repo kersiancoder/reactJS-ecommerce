@@ -21,7 +21,7 @@ export function MiNavbar() {
           <Nav>
             <Nav.Link>Login</Nav.Link>
             <Nav.Link>Registrarse</Nav.Link>
-            <Nav.Link><CartWidget /> </Nav.Link>
+            <Nav.Link as={Link} to="carrito"><CartWidget /> </Nav.Link>
                 
           </Nav>
         </Navbar.Collapse>
