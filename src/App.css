@@ -25,6 +25,10 @@ margin: 20px;
 max-width: 300px;
 }
 
+.product-cart img {
+  max-width: 100px;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

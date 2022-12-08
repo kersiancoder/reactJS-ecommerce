@@ -1,6 +1,18 @@
 import Button from 'react-bootstrap/Button';
+import ItemCount from './ItemCount';
+import { CartContext } from './CartContext';
+import { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
+    const [itemCount, setItemCount] = useState(0);
+    const ctx = useContext(CartContext);
+
+    const onAdd = (qty) => {
+        alert("You have selected " + qty + " items.");
+        setItemCount(qty);
+        ctx.addToCart(item, qty);
+    }
 
     return (
         <>
@@ -14,11 +26,15 @@ const ItemDetail = ({ item }) => {
                 </div>
                 <div className="product-text">
                     <p className='product-title'>{item.title}</p>
-                    <p>Precio: $ {item.price}</p>
-                    <p>Unidades en stock: {item.stock}</p>
-                    <Button className='pb-1'>Agregar al carrito</Button>
                     <p><b>DESCRIPCIÓN:</b></p>
                     <p className='bottom'>{item.description}</p>
+                    <p>Precio: $ {item.price}</p>
+                    <p>Unidades en stock: {item.stock}</p>
+                    {
+                        itemCount === 0
+                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
+                        : <Link to='/carrito' style={{textDecoration: "none"}}><Button>CheckOut</Button></Link>
+                    }
                 </div>
             </div>
             </>

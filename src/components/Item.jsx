@@ -6,7 +6,7 @@ const Item = ({id, thumbnail, price, title}) => {
 
     return (
             <Card className='p-3'>
-            <Card.Img variant="top" src={thumbnail}/>
+            <Link to={`/item/${id}`}><Card.Img variant="top" src={thumbnail}/></Link>
             <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Text>$ {price}</Card.Text>
