@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import Button from 'react-bootstrap/Button';
-import Item from "./Item";
+import CartItem from "./CartItem";
 
 
 const Cart = () => {
@@ -24,11 +24,11 @@ const Cart = () => {
                     ? ctx.cartList.map(item => 
                       <>
                     <div className='product-cart'>
-                    <Item key={item.idItem} id={item.idItem} title={item.titleItem} price={item.costItem} thumbnail={item.imgItem}>
+                    <CartItem key={item.idItem} id={item.idItem} title={item.titleItem} price={item.costItem} thumbnail={item.imgItem}>
                     <p>Cantidad: {item.qtyItem}</p>
                     <p>lala</p>
                     <Button type="filled" onClick={() => ctx.deleteItem(item.idItem)}>DELETE</Button>
-                    </Item>
+                    </CartItem>
                     </div>
                     </>
                     )
