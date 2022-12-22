@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MiNavbar } from './components/MiNavbar'
 import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from "./components/ItemDetailContainer";
-import { Footer } from './components/Footer'
+import Footer from './components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cart from "./components/Cart";
 import CartContextProvider from "./components/CartContext";

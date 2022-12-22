@@ -6,25 +6,18 @@ const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([]);
 
     const addToCart = (item, qty) => {
-        let found = cartList.find(product => product.idItem === item.id);
-        if ( found === undefined) {
-            setCartList([
-                ...cartList,
-                {
-                    idItem: item.id,
-                    imgItem: item.thumbnail,
-                    costItem: item.price,
-                    titleItem: item.title,
-                    qtyItem: qty
-                }
-                
-            ]);
-        } else {
+        if(isInCart(item.id))  {
             found.qtyItem += qty;
-            setCartList([
-                ...cartList
+            setCartList([...cartList]);
+        }
+        else {
+            setCartList([...cartList,{ idItem: item.id, imgItem: item.thumbnail, costItem: item.price, titleItem: item.title, qtyItem: qty }
             ]);
         }
+    }
+
+    const isInCart = (id) => {
+        return cartList.find((element) => element.idItem == id)
     }
     
     const removeList = () => {
