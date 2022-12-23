@@ -1,8 +1,12 @@
 import { BsCart } from "react-icons/bs";
+import { useContext, useEffect } from 'react';
+import { CartContext } from './CartContext';
 
 const CartWidget = () => {
+    const ctx = useContext(CartContext);
+
     return (
-        <p className="cart"><BsCart/>3</p>
+        <p className="cart"><BsCart/>{ctx.calcItemsQty()}</p>
     )
 }
 

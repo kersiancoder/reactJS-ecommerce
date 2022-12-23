@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { collection, doc, setDoc, serverTimestamp, updateDoc, increment } from "firebase/firestore";
+import db from '../utils/FirebaseConfig';
 
 
 const Cart = () => {
@@ -12,8 +14,9 @@ const Cart = () => {
     const createOrder = () => {
       const itemsForDB = ctx.cartList.map(item => ({
         id: item.idItem,
-        title: item.nameItem,
-        price: item.costItem
+        title: item.titleItem,
+        price: item.costItem,
+        qty: item.qtyItem
       }));
   
       ctx.cartList.forEach(async (item) => {
@@ -25,14 +28,16 @@ const Cart = () => {
   
       let order = {
         buyer: {
-          name: "Leo Messi",
-          email: "leo@messi.com",
-          phone: "123456789"
+          name: "Luis Suarez",
+          email: "luis@suarez.com",
+          phone: "099123456"
         },
         total: ctx.calcTotal(),
         items: itemsForDB,
         date: serverTimestamp()
       };
+
+      console.log(order);
       
       const createOrderInFirestore = async () => {
         const newOrderRef = doc(collection(db, "orders"));
@@ -84,6 +89,7 @@ const Cart = () => {
                       <div className='product-cart row'>
                         ORDER SUMMARY
                       <p>TOTAL: $ {ctx.calcSubTotal()}</p>
+                      <Button onClick={createOrder}>CHECKOUT NOW</Button>
                       </div>
                     </div>
                     </>

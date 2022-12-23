@@ -6,20 +6,19 @@ const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([]);
 
     const addToCart = (item, qty) => {
-        if(isInCart(item.id))  {
-            found.qtyItem += qty;
-            setCartList([...cartList]);
-        }
-        else {
+        let found = cartList.find(product => product.idItem === item.id);
+        if (found === undefined) {
             setCartList([...cartList,{ idItem: item.id, imgItem: item.thumbnail, costItem: item.price, titleItem: item.title, qtyItem: qty }
+            ]);
+        } else {
+            //al encontrarlo, entonces aumentamos el qty de ese producto
+            found.qtyItem += qty;
+            setCartList([
+                ...cartList
             ]);
         }
     }
 
-    const isInCart = (id) => {
-        return cartList.find((element) => element.idItem == id)
-    }
-    
     const removeList = () => {
         setCartList([]);
     }
@@ -44,8 +43,9 @@ const CartContextProvider = ({ children }) => {
     }
 
     const calcItemsQty = () => {
-        let qtys = cartList.map(item => item.qtyItem);
-        return qtys.reduce(((previousValue, currentValue) => previousValue + currentValue), 0);
+        let cantidad = 0
+        cartList.forEach((item) => cantidad = cantidad + item.qtyItem)
+        return cantidad
     }
 
 
