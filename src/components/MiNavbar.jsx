@@ -7,6 +7,7 @@ import CartWidget from './CartWidget';
 
 
 export function MiNavbar() {
+
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -26,8 +27,6 @@ export function MiNavbar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      
     </Navbar>
-    
   );
 }

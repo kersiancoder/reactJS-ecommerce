@@ -36,8 +36,6 @@ const Cart = () => {
         items: itemsForDB,
         date: serverTimestamp()
       };
-
-      console.log(order);
       
       const createOrderInFirestore = async () => {
         const newOrderRef = doc(collection(db, "orders"));

@@ -19,6 +19,7 @@ const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
             setCount(count - 1);
         }
     }
+    
     return (
         <>
             <Button onClick={decrement}>-</Button>
