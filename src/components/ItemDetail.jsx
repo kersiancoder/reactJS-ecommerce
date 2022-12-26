@@ -54,7 +54,7 @@ const ItemDetail = ({ item }) => {
                 </div>
             </div>
             </>
-            : <p>Cargando...</p>
+            : <p>Loading...</p>
         }
         </>
     );
