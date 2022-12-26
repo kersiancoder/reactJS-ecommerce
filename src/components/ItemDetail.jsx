@@ -3,13 +3,28 @@ import ItemCount from './ItemCount';
 import { CartContext } from './CartContext';
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const ItemDetail = ({ item }) => {
     const [itemCount, setItemCount] = useState(0);
     const ctx = useContext(CartContext);
 
+    function swalqty (qty) {
+        const swalQty = withReactContent(Swal)
+        if (qty > 1) {
+            swalQty.fire({
+                title: `You have selected ${qty} items`,
+                })
+        } else {
+            swalQty.fire({
+                title: `You have selected ${qty} item`,
+                })
+        }
+    }
+
     const onAdd = (qty) => {
-        alert("You have selected " + qty + " items.");
+        swalqty(qty)
         setItemCount(qty);
         ctx.addToCart(item, qty);
     }

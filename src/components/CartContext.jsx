@@ -11,7 +11,6 @@ const CartContextProvider = ({ children }) => {
             setCartList([...cartList,{ idItem: item.id, imgItem: item.thumbnail, costItem: item.price, titleItem: item.title, qtyItem: qty }
             ]);
         } else {
-            //al encontrarlo, entonces aumentamos el qty de ese producto
             found.qtyItem += qty;
             setCartList([
                 ...cartList

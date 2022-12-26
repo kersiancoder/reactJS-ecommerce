@@ -6,9 +6,10 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { collection, doc, setDoc, serverTimestamp, updateDoc, increment } from "firebase/firestore";
 import db from '../utils/FirebaseConfig';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
-
-const Cart = () => {
+  const Cart = () => {
     const ctx = useContext(CartContext);
 
     const createOrder = () => {
@@ -42,9 +43,17 @@ const Cart = () => {
         await setDoc(newOrderRef, order);
         return newOrderRef;
       }
+
+      function swalorder (result) {
+        const swalOrder = withReactContent(Swal)
+            swalOrder.fire({
+                title: `Your order has been created. `,
+                text: `Please take note of the ID of your order. \n\n\nOrder ID: ${result.id}`
+                })
+        }
     
       createOrderInFirestore()
-        .then(result => alert('Your order has been created. Please take note of the ID of your order.\n\n\nOrder ID: ' + result.id + '\n\n'))
+        .then(result => swalorder(result))
         .catch(err => console.log(err));
     
       ctx.removeList();

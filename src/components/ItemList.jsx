@@ -9,7 +9,7 @@ const ItemList = ({ items }) => {
         {
         items.length > 0
         ? items.map(item => (<Item key={item.id} {...item}/>))
-        : <p>Cargando...</p>
+        : <p>Loading...</p>
         }
         </Row>
         
