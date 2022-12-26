@@ -24,10 +24,11 @@ const ItemDetail = ({ item }) => {
     }
 
     const onAdd = (qty) => {
+        if ((qty) > 0) {
         swalqty(qty)
         setItemCount(qty);
         ctx.addToCart(item, qty);
-    }
+    }}
 
     return (
         <>
